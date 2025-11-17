@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class TaskController extends AbstractController
 {
     #[Route('/task', name: 'app_task')]
-    public function addTask(EntityManagerInterface $em): Response
+    public function taskPage(EntityManagerInterface $em): Response
     {
         $task = new Task();
         $task->setTitle("Hacer ejercicio");
@@ -20,7 +20,11 @@ final class TaskController extends AbstractController
 
         $em->persist($task);
         $em->flush();
+
+        $tasks = $em->getRepository(Task::class)->findAll();
         
-        return new Response("Task creada con ID: " . $task->getId());
+        return $this->render('task/list.html.twig', [
+            'tasks' => $tasks
+        ]);
     }
 }

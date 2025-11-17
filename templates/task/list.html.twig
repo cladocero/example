@@ -1,0 +1,7 @@
+<h1>Lista de tareas</h1>
+<ul>
+    {% for task in tasks %}
+        <li><strong>{{ task.title }}</strong> - {{ task.createdAt|date('Y-m-d H:i') }}
+        </li>
+    {% endfor %}
+</ul>
