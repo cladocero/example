@@ -14,12 +14,9 @@ class AnimalDisease
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $animalType = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
     private ?string $breed = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?int $age = null;
 
     #[ORM\Column(length: 255)]
@@ -41,34 +38,37 @@ class AnimalDisease
     private ?string $symptom4 = null;
 
     #[ORM\Column(length: 255)]
+    private ?string $animalType = null;
+
+    #[ORM\Column(length: 255)]
     private ?string $duration = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $appetiteLoss = null;
+    #[ORM\Column]
+    private ?bool $appetiteLoss = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $vomiting = null;
+    #[ORM\Column]
+    private ?bool $vomiting = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $diarrhea = null;
+    #[ORM\Column]
+    private ?bool $diarrhea = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $coughing = null;
+    #[ORM\Column]
+    private ?bool $coughing = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $laboredBreathing = null;
+    #[ORM\Column]
+    private ?bool $laboredBreathing = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $lameness = null;
+    #[ORM\Column]
+    private ?bool $lameness = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $skinLesions = null;
+    #[ORM\Column]
+    private ?bool $skinLesions = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $nasalDischarge = null;
+    #[ORM\Column]
+    private ?bool $nasalDischarge = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $eyeDischarge = null;
+    #[ORM\Column]
+    private ?bool $eyeDischarge = null;
 
     #[ORM\Column(length: 255)]
     private ?string $bodyTemperature = null;
@@ -84,14 +84,9 @@ class AnimalDisease
         return $this->id;
     }
 
-    public function getAnimalType(): ?string
+    public function setId(int $id): static
     {
-        return $this->animalType;
-    }
-
-    public function setAnimalType(string $animalType): static
-    {
-        $this->animalType = $animalType;
+        $this->id = $id;
 
         return $this;
     }
@@ -101,7 +96,7 @@ class AnimalDisease
         return $this->breed;
     }
 
-    public function setBreed(?string $breed): static
+    public function setBreed(string $breed): static
     {
         $this->breed = $breed;
 
@@ -113,7 +108,7 @@ class AnimalDisease
         return $this->age;
     }
 
-    public function setAge(?int $age): static
+    public function setAge(int $age): static
     {
         $this->age = $age;
 
@@ -192,6 +187,18 @@ class AnimalDisease
         return $this;
     }
 
+    public function getAnimalType(): ?string
+    {
+        return $this->animalType;
+    }
+
+    public function setAnimalType(string $animalType): static
+    {
+        $this->animalType = $animalType;
+
+        return $this;
+    }
+
     public function getDuration(): ?string
     {
         return $this->duration;
@@ -204,108 +211,108 @@ class AnimalDisease
         return $this;
     }
 
-    public function getAppetiteLoss(): ?string
+    public function isAppetiteLoss(): ?bool
     {
         return $this->appetiteLoss;
     }
 
-    public function setAppetiteLoss(string $appetiteLoss): static
+    public function setAppetiteLoss(bool $appetiteLoss): static
     {
         $this->appetiteLoss = $appetiteLoss;
 
         return $this;
     }
 
-    public function getVomiting(): ?string
+    public function isVomiting(): ?bool
     {
         return $this->vomiting;
     }
 
-    public function setVomiting(string $vomiting): static
+    public function setVomiting(bool $vomiting): static
     {
         $this->vomiting = $vomiting;
 
         return $this;
     }
 
-    public function getDiarrhea(): ?string
+    public function isDiarrhea(): ?bool
     {
         return $this->diarrhea;
     }
 
-    public function setDiarrhea(string $diarrhea): static
+    public function setDiarrhea(bool $diarrhea): static
     {
         $this->diarrhea = $diarrhea;
 
         return $this;
     }
 
-    public function getCoughing(): ?string
+    public function isCoughing(): ?bool
     {
         return $this->coughing;
     }
 
-    public function setCoughing(string $coughing): static
+    public function setCoughing(bool $coughing): static
     {
         $this->coughing = $coughing;
 
         return $this;
     }
 
-    public function getLaboredBreathing(): ?string
+    public function isLaboredBreathing(): ?bool
     {
         return $this->laboredBreathing;
     }
 
-    public function setLaboredBreathing(string $laboredBreathing): static
+    public function setLaboredBreathing(bool $laboredBreathing): static
     {
         $this->laboredBreathing = $laboredBreathing;
 
         return $this;
     }
 
-    public function getLameness(): ?string
+    public function isLameness(): ?bool
     {
         return $this->lameness;
     }
 
-    public function setLameness(string $lameness): static
+    public function setLameness(bool $lameness): static
     {
         $this->lameness = $lameness;
 
         return $this;
     }
 
-    public function getSkinLesions(): ?string
+    public function isSkinLesions(): ?bool
     {
         return $this->skinLesions;
     }
 
-    public function setSkinLesions(string $skinLesions): static
+    public function setSkinLesions(bool $skinLesions): static
     {
         $this->skinLesions = $skinLesions;
 
         return $this;
     }
 
-    public function getNasalDischarge(): ?string
+    public function isNasalDischarge(): ?bool
     {
         return $this->nasalDischarge;
     }
 
-    public function setNasalDischarge(string $nasalDischarge): static
+    public function setNasalDischarge(bool $nasalDischarge): static
     {
         $this->nasalDischarge = $nasalDischarge;
 
         return $this;
     }
 
-    public function getEyeDischarge(): ?string
+    public function isEyeDischarge(): ?bool
     {
         return $this->eyeDischarge;
     }
 
-    public function setEyeDischarge(string $eyeDischarge): static
+    public function setEyeDischarge(bool $eyeDischarge): static
     {
         $this->eyeDischarge = $eyeDischarge;
 

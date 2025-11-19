@@ -1,6 +1,6 @@
 USE animal_disease;
 GO
-CREATE TABLE AnimalDisease_staging (
+CREATE TABLE animal_disease_staging (
     [Animal_Type] NVARCHAR(255),
     [Breed] NVARCHAR(255),
     [Age] NVARCHAR(255),
