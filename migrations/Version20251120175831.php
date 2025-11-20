@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20251119194337 extends AbstractMigration
+final class Version20251120175831 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,6 +21,7 @@ final class Version20251119194337 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE animal_disease (id INT IDENTITY NOT NULL, breed NVARCHAR(255) NOT NULL, age INT NOT NULL, gender NVARCHAR(255) NOT NULL, weight DOUBLE PRECISION NOT NULL, symptom1 NVARCHAR(255) NOT NULL, symptom2 NVARCHAR(255) NOT NULL, symptom3 NVARCHAR(255) NOT NULL, symptom4 NVARCHAR(255) NOT NULL, animal_type NVARCHAR(255) NOT NULL, duration NVARCHAR(255) NOT NULL, appetite_loss BIT NOT NULL, vomiting BIT NOT NULL, diarrhea BIT NOT NULL, coughing BIT NOT NULL, labored_breathing BIT NOT NULL, lameness BIT NOT NULL, skin_lesions BIT NOT NULL, nasal_discharge BIT NOT NULL, eye_discharge BIT NOT NULL, body_temperature NVARCHAR(255) NOT NULL, heart_rate INT NOT NULL, disease NVARCHAR(255) NOT NULL, PRIMARY KEY (id))');
+        $this->addSql('CREATE TABLE animal_disease_stats (animal_type NVARCHAR(255) NOT NULL, eye_discharge BIT NOT NULL, animal_count INT NOT NULL, median_age DOUBLE PRECISION NOT NULL, median_weight INT NOT NULL, median_heart_rate DOUBLE PRECISION NOT NULL, PRIMARY KEY (animal_type, eye_discharge))');
         $this->addSql('CREATE TABLE task (id INT IDENTITY NOT NULL, title NVARCHAR(255) NOT NULL, created_at DATETIME2(6) NOT NULL, PRIMARY KEY (id))');
         $this->addSql('EXEC sp_addextendedproperty N\'MS_Description\', N\'(DC2Type:datetime_immutable)\', N\'SCHEMA\', \'dbo\', N\'TABLE\', \'task\', N\'COLUMN\', \'created_at\'');
         $this->addSql('CREATE TABLE messenger_messages (id BIGINT IDENTITY NOT NULL, body VARCHAR(MAX) NOT NULL, headers VARCHAR(MAX) NOT NULL, queue_name NVARCHAR(190) NOT NULL, created_at DATETIME2(6) NOT NULL, available_at DATETIME2(6) NOT NULL, delivered_at DATETIME2(6), PRIMARY KEY (id))');
@@ -46,6 +47,7 @@ final class Version20251119194337 extends AbstractMigration
         $this->addSql('CREATE SCHEMA db_securityadmin');
         $this->addSql('CREATE SCHEMA dbo');
         $this->addSql('DROP TABLE animal_disease');
+        $this->addSql('DROP TABLE animal_disease_stats');
         $this->addSql('DROP TABLE task');
         $this->addSql('DROP TABLE messenger_messages');
     }

@@ -70,6 +70,11 @@ class AnimalDisease
     #[ORM\Column]
     private ?bool $eyeDischarge = null;
 
+    #[ORM\ManyToOne(targetEntity: AnimalDiseaseStats::class, inversedBy: 'animalDiseases')]
+    #[ORM\JoinColumn(name: "animalType", referencedColumnName: "animal_type")]
+    #[ORM\JoinColumn(name: "eyeDischarge", referencedColumnName: "eye_discharge")]
+    private ?AnimalDiseaseStats $stats;
+
     #[ORM\Column(length: 255)]
     private ?string $bodyTemperature = null;
 
@@ -82,13 +87,6 @@ class AnimalDisease
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): static
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getBreed(): ?string
